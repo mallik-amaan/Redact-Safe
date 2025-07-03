@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "377369191864",
+    "project_id": "redactsafe",
+    "storage_bucket": "redactsafe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377369191864:android:5a29e7dd2b9a0921f29b4d",
+        "android_client_info": {
+          "package_name": "com.example.redact_safe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACFUK-9AL5ycJbH2IGOs3ZOoufQBESUnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
