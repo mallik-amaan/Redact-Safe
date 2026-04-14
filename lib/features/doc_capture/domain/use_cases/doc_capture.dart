@@ -19,3 +19,5 @@ class DocCaptureParams {
 
   DocCaptureParams({required this.cameraController});
 }
+
+

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:redact_safe/features/doc_capture/presentation/providers/cubit/doc_scan_cubit.dart';
 import 'package:redact_safe/features/doc_capture/presentation/widgets/capture_button.dart';
 
@@ -94,6 +95,12 @@ class _DocScanScreenState extends State<DocScanScreen> {
                   ),
                   SizedBox(height: 20),
                   Image.file(File(state.filePath), scale: 1),
+                  TextButton(
+                    child: Text("Next"),
+                    onPressed: () {
+                      BlocProvider.of<DocScanCubit>(context).completeCapture();
+                    },
+                  ),
                 ],
               ),
             );
@@ -101,6 +108,9 @@ class _DocScanScreenState extends State<DocScanScreen> {
             return const Center(child: CircularProgressIndicator());
           } else if (state is DocScanError) {
             return Center(child: Text("Error: ${state.message}"));
+          } else if (state is DocScanComplete) {
+            context.go("/redact-doc");
+            return Container();
           } else {
             return const Center(child: Text("Initializing camera..."));
           }

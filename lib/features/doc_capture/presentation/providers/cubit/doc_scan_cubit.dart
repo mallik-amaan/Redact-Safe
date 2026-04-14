@@ -26,17 +26,14 @@ class DocScanCubit extends Cubit<DocScanState> {
   void captureDocument() {
     if (_cameraController.value.isInitialized) {
       emit(DocScanLoading());
-      docScanUsecaseBundle.docCapture(
-        DocCaptureParams(
-          cameraController: _cameraController
-          )).then(
-        (result) {
-          result.fold(
-            (failure) => emit(DocScanError(failure.message)),
-            (filePath) => emit(DocScanSuccess(filePath)),
-          );
-        },
-      );
+      docScanUsecaseBundle
+          .docCapture(DocCaptureParams(cameraController: _cameraController))
+          .then((result) {
+            result.fold(
+              (failure) => emit(DocScanError(failure.message)),
+              (filePath) => emit(DocScanSuccess(filePath)),
+            );
+          });
     } else {
       emit(DocScanError("Camera is not initialized"));
     }
@@ -49,5 +46,9 @@ class DocScanCubit extends Cubit<DocScanState> {
       (failure) => emit(DocScanError(failure.message)),
       (_) => emit(DocScanCameraDisposed()),
     );
+  }
+
+  void completeCapture() {
+    emit(DocScanComplete());
   }
 }

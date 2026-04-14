@@ -47,3 +47,5 @@ final class DocScanCameraDisposed extends DocScanState {
   @override
   List<Object> get props => [];
 }
+
+final class DocScanComplete extends DocScanState{}
